@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="../lib/mysql-connector-java-5.1.18-bin.jar" />
+
+	<context id="MySqlTables" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost/estore" userId="root"
+			password="123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.wyz.entity.estore" targetProject="../src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.wyz.mapper.estore" targetProject="../src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="estore" tableName="t_template" domainObjectName="Template" enableInsert="true">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" identity="true" sqlStatement="MYSQL" />
+			<columnOverride column="C1" jdbcType="VARCHAR" />
+			<columnOverride column="C2" jdbcType="VARCHAR" />
+			<columnOverride column="C3" jdbcType="VARCHAR" />
+			<columnOverride column="C4" jdbcType="VARCHAR" />
+			<columnOverride column="C5" jdbcType="VARCHAR" />
+		</table>
+
+		<table schema="estore" tableName="t_goods" domainObjectName="Goods" enableInsert="true">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" identity="true" sqlStatement="MYSQL" />
+			<columnOverride column="id_class" jdbcType="INTEGER" />
+			<columnOverride column="goods_name" jdbcType="VARCHAR" />
+			<columnOverride column="describe" jdbcType="VARCHAR" />
+		</table>
+
+		<table schema="estore" tableName="t_goods_class" domainObjectName="GoodsClass" enableInsert="true">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="ID" identity="true" sqlStatement="MYSQL" />
+			<columnOverride column="id_parent" jdbcType="INTEGER" />
+			<columnOverride column="class_name" jdbcType="VARCHAR" />
+			<columnOverride column="describe" jdbcType="VARCHAR" />
+		</table>
+
+	</context>
+</generatorConfiguration>
